@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="preload" href="images/paper_background_FAQs.jpg" as="image?">
+
+
+    <title>About Alec</title>
+    <style>
+        body, html {
+            background-color: black ;
+            background-image: url(images/paper_background_FAQs.jpg); 
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            z-index: -1;
+            margin: 0; 
+            padding: 0; 
+        }
+
+        .back img {
+            position: absolute;
+            top: .8%;
+            left: 1.3%;
+            right: 0;
+            bottom: 0;
+            opacity: 100%;
+            width:60px;
+            height: auto;
+            z-index: 300;
+        }
+
+        .back img:hover {
+            content: url(images/ARROW\ 2.png);
+        }
+
+
+.drawing{
+    position: fixed;
+    top: 7vh; 
+    right: 5vw; 
+    max-width: 40%;
+    width: auto;
+    height: auto;
+    min-width: 600px;
+}
+
+.whatsinpockets {
+    position: fixed;
+    left: 18%;
+    top: calc(50vh - 5px); 
+    max-width: 30%;
+    min-width: 400px; 
+    min-height: 150px; 
+    width: auto;
+    height: auto;
+    z-index: 1; 
+    transition: top 0.5s ease, right 0.5s ease; 
+    mix-blend-mode: lighten;
+}
+
+.pocketcontents {
+    position: fixed;
+    top: 20%; 
+    right: 30%;
+    max-width: 80%;
+    min-width: 350px; 
+    min-height: auto; 
+    width: auto;
+    height: auto;
+    z-index: 1; 
+    transition: top 0.5s ease, right 0.5s ease; 
+    opacity: 90%;
+
+}
+
+@media (max-width: 1200px) {
+        .pocketcontents {
+            position: fixed;
+            top: calc(40vh); 
+            right: calc(50vw - 500px);
+            max-width: 70%;
+            min-width: 1000px; 
+            min-height: auto; 
+            width: auto;
+            height: auto;
+            z-index: 1; 
+            transition: top 0.5s ease, right 0.5s ease; 
+            opacity: 90%;
+
+            
+
+        }
+
+        .whatsinpockets {
+    position: fixed;
+    top: calc(60vh); 
+    right: calc(50vw - 100px); 
+    max-width: 30%;
+    min-width: 350px;
+    min-height: 150px; 
+    width: auto;
+    height: auto;
+    z-index: 1; 
+    transition: top 0.5s ease, right 0.5s ease; 
+    mix-blend-mode: lighten;
+}
+
+
+    }
+
+    
+
+    
+    
+    </style>
+</head>
+<body>
+
+
+    <div class="back">
+        <a href="javascript:history.back()">
+            <img src="images/ARROW 1.png" alt="back arrow" class="back">
+        </a>
+    </div>
+    
+    <img src="images/my_eyes_open.png" alt="sketch of me" class="drawing">
+    <img src="images/WHATSPOCKETS 1.png" alt="what's in alec's pockets?" class="whatsinpockets">
+    <img src="images/pocketcontents.png" alt="a ruble, a quitar pick, a meat raffle ticket, peppers, old ID, a chinese fortune" class="pocketcontents" id="pocketcontents" style="display: none;">
+
+
+
+
+    <script>
+   
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    const image = document.querySelector('.drawing');
+    const openEyesSrc = 'images/my_eyes_open.png';
+    const closedEyesSrc = 'images/my_eyes_closed.png'; 
+
+    // Set to eyes closed initially
+    image.src = closedEyesSrc;
+
+    function blink() {
+        // Change to closed eyes
+        image.src = closedEyesSrc;
+
+        // Timeout to revert back to open eyes
+        setTimeout(() => {
+            image.src = openEyesSrc;
+            // Randomly decide if we should blink again quickly (double blink)
+            if (Math.random() < 0.3) { // 30% chance to double blink
+                setTimeout(blink, 100); // Short delay before double blink
+            }
+        }, 160); // Blink duration
+    }
+
+    function startBlinking() {
+        image.src = openEyesSrc;
+        
+        // Function to schedule the next blink
+        function scheduleNextBlink() {
+            const randomInterval = Math.random() * 4000 + 1000; // Random interval between 1s and 5s
+            setTimeout(() => {
+                blink();
+                scheduleNextBlink(); // Schedule the next blink after the current one
+            }, randomInterval);
+        }
+
+        scheduleNextBlink(); // Start the blinking process
+    }
+
+    // Timeout for initial wake up
+    setTimeout(startBlinking, 400);
+});
+
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const image = document.querySelector('.whatsinpockets');
+
+        if (image) {
+            image.addEventListener('mouseenter', () => {
+                
+                image.src = image.src.replace('1.png', '2.png');
+            });
+
+            image.addEventListener('mouseleave', () => {
+               
+                image.src = image.src.replace('2.png', '1.png');
+            });
+
+            
+            image.addEventListener('click', () => {
+                image.style.display = 'none'; //hides
+
+                pocketcontents.style.display = 'block'; //shows the toehro one
+
+            });
+        }
+    });
+</script>
+
+
+</script>
+
+
+
+</body>
+</html>

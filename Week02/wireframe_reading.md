@@ -1,0 +1,1 @@
+I didn't actually find this article very helpful. it was speaking very broadly about UX in general, more so than wireframing a website specifically. I just wish there was more basic info on how to build one and what to include. But i see how it could be helpful in a serious proffessional setting. 
