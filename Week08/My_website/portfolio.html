@@ -73,18 +73,17 @@
     display: block;
     margin: auto;
     position: absolute;
-    transform: translate(-50%, -50%); /* No scale transformation */
+    transform: translate(-50%, -50%); 
     z-index: 1;
-    background-size: contain; /* Ensures the entire image fits within the div */
-    background-repeat: no-repeat; /* Prevents the image from repeating */
-    background-position: center; /* Centers the background image */
-    width: 200px; /* Adjust width as necessary */
-    height: 200px; /* Adjust height as necessary */
+    background-size: contain; 
+    background-repeat: no-repeat; 
+    background-position: center; 
+    width: 200px; 
+    height: 200px; 
 }
 
 
 
-        /* Adjust the positioning of each medium for desktop view */
         #GRAPHIC-DESIGN-1 {scale: 70%; top: 40vh; left: 82vw; background-image: url('images/GRAPHIC DESIGN 1.png'); }
         #INSTALLATION-1 {scale: 50%; top: 73vh; left: 25vw; background-image: url('images/INSTALLATION 1.png'); }
         #ORIGINAL-RECIPES-1 {scale: 72%; top: 68vh; left: 81vw; background-image: url('images/ORIGINAL RECIPES 1.png'); }
@@ -92,7 +91,6 @@
         #VIDEO-1 {scale:30%; top: 77vh; left: 51vw; background-image: url('images/VIDEO 1.png'); }
         #MODELING-1 {scale: 50%; top: 27vh; left: 25vw; background-image: url('images/3D MODELING 1.png'); }
 
-        /* Hover state to switch to '2' images */
         #GRAPHIC-DESIGN-1:hover { background-image: url('images/GRAPHIC DESIGN 2.png'); }
         #INSTALLATION-1:hover { background-image: url('images/INSTALLATION 2.png'); }
         #ORIGINAL-RECIPES-1:hover { background-image: url('images/ORIGINAL RECIPES 2.png'); }
@@ -100,7 +98,6 @@
         #VIDEO-1:hover { background-image: url('images/VIDEO 2.png'); }
         #MODELING-1:hover { background-image: url('images/3D MODELING 2.png'); }
 
-        /* Media queries for responsiveness (example for one breakpoint, adjust as needed) */
         @media (max-width: 900px) {
             #GRAPHIC-DESIGN-1 { top: 25vh; left: 75vw; transition: top 0.5s ease, right 0.5s ease;}
             #INSTALLATION-1 { top: 70vh; left: 25vw; transition: top 0.5s ease, right 0.5s ease;}

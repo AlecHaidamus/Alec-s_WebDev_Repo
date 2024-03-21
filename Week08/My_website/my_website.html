@@ -39,7 +39,7 @@
         <img src="images/CONTACT 1.png" alt="contact" class="handwriting" id="contactImage">
         <img src="images/FAQS 1.png" alt="faqs" class="handwriting" id="faqsImage">
         
-        <!-- the hotpsots -->
+        
           <a href="About.html" class="hotspot" id="aboutHotspot" data-target="about"></a>
           <a href="Portfolio.html" class="hotspot" id="portfolioHotspot" data-target="portfolio"></a>
           <a href="Contact.html" class="hotspot" id="contactHotspot" data-target="contact"></a>
@@ -57,27 +57,25 @@
 
 };
 window.addEventListener('pageshow', function(event) {
-  //scroll reset??
+  
   document.querySelector('.sliding-container').style.animation = 'none';
   setTimeout(function() {
     document.querySelector('.sliding-container').style.animation = 'slideInToCenter 1s forwards';
-  }, 50); // animation delay
+  }, 50); 
 });
 
 
       document.querySelectorAll('.hotspot').forEach(hotspot => {
-        // The ID of the hotspot corresponds to the alt text of the coressponding image
-        const altText = hotspot.id.replace('Hotspot', '').toLowerCase(); // Convert ID to alt text.
-        const image = document.querySelector(`img[alt="${altText}"]`); // Find the corresponding image by alt text.
+        const altText = hotspot.id.replace('Hotspot', '').toLowerCase();
+        const image = document.querySelector(`img[alt="${altText}"]`);
     
         if (image) {
           hotspot.addEventListener('mouseenter', () => {
-            // replaces 1 with 2
+
             image.src = image.src.replace('1.png', '2.png');
           });
     
           hotspot.addEventListener('mouseleave', () => {
-            // reverts back
             image.src = image.src.replace('2.png', '1.png');
           });
         }

@@ -144,39 +144,34 @@ document.addEventListener('DOMContentLoaded', function() {
     const openEyesSrc = 'images/my_eyes_open.png';
     const closedEyesSrc = 'images/my_eyes_closed.png'; 
 
-    // Set to eyes closed initially
     image.src = closedEyesSrc;
 
     function blink() {
-        // Change to closed eyes
         image.src = closedEyesSrc;
 
-        // Timeout to revert back to open eyes
         setTimeout(() => {
             image.src = openEyesSrc;
-            // Randomly decide if we should blink again quickly (double blink)
-            if (Math.random() < 0.3) { // 30% chance to double blink
-                setTimeout(blink, 100); // Short delay before double blink
+            if (Math.random() < 0.3) { 
+                setTimeout(blink, 100); 
             }
-        }, 160); // Blink duration
+        }, 160); 
     }
 
     function startBlinking() {
         image.src = openEyesSrc;
         
-        // Function to schedule the next blink
         function scheduleNextBlink() {
-            const randomInterval = Math.random() * 4000 + 1000; // Random interval between 1s and 5s
+            const randomInterval = Math.random() * 4000 + 1000;
             setTimeout(() => {
                 blink();
-                scheduleNextBlink(); // Schedule the next blink after the current one
+                scheduleNextBlink(); 
             }, randomInterval);
         }
 
-        scheduleNextBlink(); // Start the blinking process
+        scheduleNextBlink(); 
     }
 
-    // Timeout for initial wake up
+   
     setTimeout(startBlinking, 400);
 });
 
@@ -197,9 +192,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
             
             image.addEventListener('click', () => {
-                image.style.display = 'none'; //hides
+                image.style.display = 'none';
 
-                pocketcontents.style.display = 'block'; //shows the toehro one
+                pocketcontents.style.display = 'block'; 
 
             });
         }

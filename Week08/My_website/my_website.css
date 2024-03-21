@@ -32,7 +32,7 @@ body::before {
   position: relative;
   top: 50%; 
   left: 50%;
-  transform: translate(-50%, -100%); /* Starting above window */
+  transform: translate(-50%, -100%); 
   width: 100%; 
   height: auto; 
   animation: slideInToCenter 1s forwards; 
