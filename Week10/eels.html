@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title></title>
+<style>
+    .eel-container {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-end;
+    position: fixed; 
+    bottom: 0;
+    width: 100%;
+}
+
+.eel {
+    position: relative;
+    width: 100px; 
+    height: auto;
+    transition: transform 0.5s ease; 
+}
+
+
+    body, html {
+            background-color: black;
+            background-image: url(paper_background_eels.jpg); 
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            z-index: -1;
+            margin: 0; 
+            padding: 0;
+            cursor: url(images/cursor.png), auto;
+            overflow: hidden;
+
+
+        }
+</style>
+</head>
+
+    <body>
+        <div class="eel-container">
+            <img src="eel1.png" alt="Garden Eel 1" class="eel" data-fear="600" data-haste="1000">
+            <img src="eel2.png" alt="Garden Eel 2" class="eel" data-fear="800" data-haste="600">
+            <img src="eel3.png" alt="Garden Eel 3" class="eel" data-fear="400" data-haste="600">
+            <img src="eel4.png" alt="Garden Eel 4" class="eel" data-fear="700" data-haste="600">
+
+
+        </div>
+        
+
+        <script>
+            function EelMove() {
+                var eels = document.querySelectorAll('.eel'); //gets all the eels (list)
+                document.body.addEventListener('mousemove', function(e) { //listens for mouse movement (then puts the X & Y values of mouse in variables below (when mouse moves))
+                    var mouseX = e.clientX; 
+                    var mouseY = e.clientY;
+        
+                    eels.forEach(eel => { //for loop goes through list of eels (and does everything below)
+                        var eelRect = eel.getBoundingClientRect(); //gets the size of the image
+                        var eelX = eelRect.left + eelRect.width / 2; //middle
+                        var eelY = eelRect.top + eelRect.height / 2;
+                        var diffX = mouseX - eelX; //calculates differences between mouse and eel 
+                        var diffY = mouseY - eelY;
+                        var distance = Math.sqrt(diffX * diffX + diffY * diffY); //pythagorean theorem! 
+        
+                        var fear = parseInt(eel.getAttribute('data-fear')); //gets the data from the eels (fear and haste (threshold an speed)) (parseint makes sure it's a number)
+                        var haste = parseInt(eel.getAttribute('data-haste'));
+        
+                        if (distance < fear) { //checks if mouse is in fear distance from eel
+                            var factor = (fear - distance) / fear;
+                            var translateY = Math.min(haste, haste * factor * factor);
+                            var rotateAngle = Math.min(20, 20 * factor); //calculates rotation (20 is max)
+                            eel.style.transform = `translateY(${translateY}px) rotate(${rotateAngle}deg)`; //moves eel with calulcated values if mouse is in fear distance
+                        } 
+                    });
+                });
+            }
+        
+            document.addEventListener('DOMContentLoaded', EelMove); //function is called when the page loads
+        </script>
+        
+        
+        
+        
+    </body>
+    
+
+</html>
