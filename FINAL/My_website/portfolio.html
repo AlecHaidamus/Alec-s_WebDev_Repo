@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <link rel="stylesheet" href="./my_website.css">
+    <link rel="preload" href="images/paper_background_portfolio.jpg" as="image">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" /> 
+    <title>Alec's Portfolio</title>
+    <style>
+
+
+
+body, html {
+            background-color: black;
+            background-image: url(images/paper_background_portfolio.jpg); 
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            z-index: -1;
+            margin: 0; 
+            padding: 0;
+            cursor: url(images/), auto;
+            overflow: hidden;
+
+
+        }
+        
+        .eyeballs {
+            display: block;
+            margin: auto;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            max-width: 1350px; 
+            max-height: 1350px; 
+            z-index: 1;
+        }
+        
+       
+        .eye-component {
+            display: block;
+            margin: auto;
+            position: absolute;
+            top: 50%;  
+            left: 50%;  
+            transform: translate(-50%, -50%);
+            max-width: 1350px;  
+            max-height: 1350px;  
+            z-index: 0;
+        }
+        
+        .eye-component {
+            top: 50%;  
+            left: 50%;  
+            max-width: 1350px;  
+            max-height: 1350px;  
+            z-index: 0;
+        }
+
+
+    
+
+        .mediums {
+    display: block;
+    margin: auto;
+    position: absolute;
+    transform: translate(-50%, -50%); 
+    z-index: 1;
+    background-size: contain; 
+    background-repeat: no-repeat; 
+    background-position: center; 
+    width: 200px; 
+    height: 200px; 
+    cursor: pointer;
+}
+
+
+
+        #INSTALLATION-1 {scale: 50%; top: 73vh; left: 25vw; background-image: url('images/INSTALLATION 1.png'); }
+        #ORIGINAL-RECIPES-1 {scale: 72%; top: 68vh; left: 81vw; background-image: url('images/ORIGINAL RECIPES 1.png'); }
+        #SOUND-DESIGN-1 {scale: 60%; top: 47vh; left: 21vw; background-image: url('images/SOUND DESIGN 1.png'); }
+        #vidnlive {scale:130%; top: 77vh; left: 47vw; rotate: 5degs; background-image: url('images/Vid&Live1.jpg'); mix-blend-mode: lighten;}
+        #MODELING-1 {scale: 50%; top: 27vh; left: 25vw; background-image: url('images/3D MODELING 1.png'); }
+
+        #INSTALLATION-1:hover { background-image: url('images/INSTALLATION 2.png'); }
+        #ORIGINAL-RECIPES-1:hover { background-image: url('images/ORIGINAL RECIPES 2.png'); }
+        #SOUND-DESIGN-1:hover { background-image: url('images/SOUND DESIGN 2.png'); }
+        #vidnlive:hover { background-image: url('images/Vid&Live2.jpg'); mix-blend-mode: lighten;}
+        #MODELING-1:hover { background-image: url('images/3D MODELING 2.png'); }
+
+        @media (max-width: 900px) {
+            #INSTALLATION-1 { top: 70vh; left: 25vw; transition: top 0.5s ease, right 0.5s ease;}
+            #ORIGINAL-RECIPES-1 { top: 81vh; left: 55vw; transition: top 0.5s ease, right 0.5s ease;}
+            #SOUND-DESIGN-1 { top: 35vh; left: 21vw; transition: top 0.5s ease, right 0.5s ease;}
+            #vidnlive { top: 63vh; left: 72vw; transition: top 0.5s ease, right 0.5s ease;}
+            #MODELING-1 { top: 15vh; left: 40vw; transition: top 0.5s ease, right 0.5s ease;}
+        }
+
+    </style>
+</head>
+<body>
+    <img src="images/eyeballs.png" alt="Eyeballs" class="eyeballs" id="eyeballs">
+    <img src="images/left iris.png" alt="Left Iris" class="eye-component" id="leftIris">
+    <img src="images/right iris.png" alt="Right Iris" class="eye-component" id="rightIris">
+    <img src="images/right pupil.png" alt="Right Pupil" class="eye-component" id="rightPupil">
+    <img src="images/left pupil.png" alt="Left Pupil" class="eye-component" id="leftPupil">
+
+    <a href="3D.html"><div class="mediums" id="MODELING-1"></div></a>
+    <a href="cake.html"><div class="mediums" id="ORIGINAL-RECIPES-1"></div></a>
+    <a href="Sound.html"><div class="mediums" id="SOUND-DESIGN-1"></div></a>
+    <a href="vidnlive.html"><div class="mediums" id="vidnlive"></div></a>
+
+    <div class="back">
+        <a href="javascript:history.back()">
+            <img src="images/ARROW 1.png" alt="back arrow" class="back">
+        </a>
+    </div>
+ <script>
+
+        document.addEventListener('mousemove', (event) => {
+            const eyes = document.querySelectorAll('.eye-component');
+            eyes.forEach(eye => {
+
+                const rect = eye.getBoundingClientRect();
+                const eyeCenterX = rect.left + rect.width / 2;
+                const eyeCenterY = rect.top + rect.height / 2;
+
+                const deltaX = event.clientX - eyeCenterX;
+                const deltaY = event.clientY - eyeCenterY;
+
+                const moveRatio = eye.id.includes('Pupil') ? 0.015 : 0.005;
+
+          
+                const moveX = deltaX * moveRatio;
+                const moveY = deltaY * moveRatio;
+
+                eye.style.transform = `translate(-50%, -50%) translate(${moveX}px, ${moveY}px)`;
+            });
+        });
+
+    </script>
+</body>
+</html>
